@@ -15,62 +15,64 @@ class SideBarSection extends StatefulWidget {
 class _SideBarSectionState extends State<SideBarSection> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const LogoSection(),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const InfoSection(),
-                const Divider(
-                  endIndent: 10,
-                  indent: 10,
-                  color: lightBlue,
-                ),
-                const GoalsSection(),
-                const Divider(
-                  endIndent: 10,
-                  indent: 10,
-                  color: lightBlue,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextButton(
-                    onPressed: () {},
-                    child: FittedBox(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.download,
-                              size: 20,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Download',
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
-                          ],
+    return Drawer(
+      child: Column(
+        children: [
+          const LogoSection(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const InfoSection(),
+                  const Divider(
+                    endIndent: 10,
+                    indent: 10,
+                    color: lightBlue,
+                  ),
+                  const GoalsSection(),
+                  const Divider(
+                    endIndent: 10,
+                    indent: 10,
+                    color: lightBlue,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: FittedBox(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.download,
+                                size: 20,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Download',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
-                const ContactsSection(),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
+                      )),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const ContactsSection(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

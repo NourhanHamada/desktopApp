@@ -3,6 +3,8 @@ import 'package:desktop_app/constants/images.dart';
 import 'package:desktop_app/model/demo.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/responsive.dart';
+
 class ProjectDescriptionScreen extends StatefulWidget {
   const ProjectDescriptionScreen({Key? key}) : super(key: key);
 
@@ -16,8 +18,13 @@ class _ProjectDescriptionScreenState extends State<ProjectDescriptionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: darkBlue,
+      appBar: Responsive.isDesktop(context)? null : AppBar(
+        title: const  Text('Details'),
+        backgroundColor: darkBlue,
+        elevation: 10,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(50.0),
+        padding: Responsive.isDesktop(context)?  const EdgeInsets.all(50.0) : const EdgeInsets.all(20),
         child: Card(
           color: lightBlue,
           elevation: 20,

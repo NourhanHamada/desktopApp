@@ -1,5 +1,6 @@
 import 'package:desktop_app/constants/colors.dart';
 import 'package:flutter/material.dart';
+import '../../../constants/responsive.dart';
 import '../../../model/demo.dart';
 import '../../screens/project_description_screen.dart';
 
@@ -28,6 +29,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
               ),
             ),
             projects(
+              context: context,
               itemCount: demoList.length,
               itemBuilder: (context, index) {
                 return Container(
@@ -61,7 +63,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                             ),
                             Text(
                               '${demoList[index].descriptions}',
-                              maxLines: 5,
+                              maxLines: Responsive.isDesktop(context)? 5 : Responsive.isMobile(context)?  9 : Responsive.isTablet(context)? 9 : 5,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(height: 1.7),
                             ),
@@ -101,14 +103,16 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   }
 }
 
-projects({required var itemCount, required var itemBuilder}) {
+projects({required var itemCount, required var itemBuilder, var context}) {
   return GridView.builder(
+    physics: const NeverScrollableScrollPhysics(),
     shrinkWrap: true,
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        mainAxisSpacing: 15,
+    gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: Responsive.isDesktop(context)?  3 : Responsive.isMobile(context)? 1 : 2,
+        mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        childAspectRatio: 0.60),
+        childAspectRatio: 0.70,
+    ),
     itemCount: itemCount,
     itemBuilder: itemBuilder,
   );

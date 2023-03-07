@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/images.dart';
+import '../../../constants/responsive.dart';
 
 class HomeSection extends StatelessWidget {
   const HomeSection({Key? key}) : super(key: key);
@@ -12,9 +13,11 @@ class HomeSection extends StatelessWidget {
       aspectRatio: 1,
       child: Stack(
         fit: StackFit.expand,
-        children:  [
-          const Image(image: AssetImage(background2),
-          fit: BoxFit.cover,
+        alignment: Alignment.center,
+        children: [
+          const Image(
+            image: AssetImage(background2),
+            fit: BoxFit.cover,
           ),
           Container(
             color: darkBlue.withOpacity(0.2),
@@ -24,21 +27,53 @@ class HomeSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Build a great future\n for all of us!',
-                  style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    color: whiteColor,
-                    backgroundColor: darkBlue.withOpacity(.4)
-                  ),),
+                  Text(
+                    'Build a great future\n for all of us!',
+                    style: Responsive.isDesktop(context)
+                        ? Theme.of(context).textTheme.headlineLarge!.copyWith(
+                            color: whiteColor,
+                            backgroundColor: darkBlue.withOpacity(.4))
+                        : Responsive.isMobile(context)
+                            ? Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                    color: whiteColor,
+                                    backgroundColor: darkBlue.withOpacity(.4))
+                            : Theme.of(context)
+                                .textTheme
+                                .headlineMedium!
+                                .copyWith(
+                                    color: whiteColor,
+                                    backgroundColor: darkBlue.withOpacity(.4)),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: ElevatedButton(onPressed: (){},
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              'Contact Us!',
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Contact Us!',
+                          style: Responsive.isDesktop(context)
+                              ? Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                    color: whiteColor,
+                                  )
+                              : Responsive.isMobile(context)
+                                  ? Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(
+                                        color: whiteColor,
+                                      )
+                                  : Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        color: whiteColor,
+                                      ),
                         ),
+                      ),
                     ),
                   ),
                 ],

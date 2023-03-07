@@ -22,16 +22,17 @@ class MyApp extends StatelessWidget {
               bodyColor: Colors.white,
             )
             .copyWith(
-                bodyLarge: const TextStyle(
-                  color: whiteColor,
-                  fontSize: 15,
-                ),
-                bodyMedium: TextStyle(
-                  color: lightGrey,
-                  fontSize: 13,
-                  height: 1.3,
-                ),
-                headlineMedium: TextStyle(color: lightGrey)),
+              bodyLarge: const TextStyle(
+                fontSize: 18,
+              ),
+              bodyMedium: const TextStyle(
+                fontSize: 14,
+                height: 1.3,
+              ),
+              bodySmall: const TextStyle(fontSize: 12),
+              headlineMedium: TextStyle(color: lightGrey),
+              headlineSmall: TextStyle(color: lightGrey),
+            ),
       ),
       home: const HomeScreen(),
     );
